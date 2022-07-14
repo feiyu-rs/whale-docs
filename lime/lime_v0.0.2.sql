@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      PostgreSQL 9.x                               */
-/* Created on:     2022-06-27 18:37:23                          */
+/* Created on:     2022-07-14 21:15:14                          */
 /*==============================================================*/
 
 
@@ -13,9 +13,9 @@ create table account (
    name                 VARCHAR(15)          not null,
    icon                 TEXT                 not null,
    status               INT2                 not null,
-   create_time          TIMESTAMP            not null,
-   update_time          TIMESTAMP            not null,
-   constraint PK_ACCOUNT primary key (id)
+   create_time          TIMESTAMP WITH TIME ZONE not null,
+   update_time          TIMESTAMP WITH TIME ZONE not null,
+   constraint pk__account__id primary key (id)
 );
 
 comment on table account is
@@ -51,9 +51,9 @@ create table account_detail (
    name                 VARCHAR(15)          not null,
    balance              DECIMAL(18,6)        not null,
    status               INT2                 not null,
-   create_time          TIMESTAMP            not null,
-   update_time          TIMESTAMP            not null,
-   constraint PK_ACCOUNT_DETAIL primary key (id)
+   create_time          TIMESTAMP WITH TIME ZONE not null,
+   update_time          TIMESTAMP WITH TIME ZONE not null,
+   constraint pk__account_detail__id primary key (id)
 );
 
 comment on table account_detail is
@@ -90,9 +90,9 @@ create table budget (
    day_budget_amount    DECIMAL(18,6)        null,
    budget_start_day     INT2                 null,
    status               INT2                 not null,
-   create_time          TIMESTAMP            not null,
-   update_time          TIMESTAMP            not null,
-   constraint PK_BUDGET primary key (id)
+   create_time          TIMESTAMP WITH TIME ZONE not null,
+   update_time          TIMESTAMP WITH TIME ZONE not null,
+   constraint pk__budget__id primary key (id)
 );
 
 comment on table budget is
@@ -132,9 +132,9 @@ create table ledger (
    theme_color          VARCHAR(50)          null,
    cover_image          TEXT                 null,
    status               INT2                 not null,
-   create_time          TIMESTAMP            not null,
-   update_time          TIMESTAMP            not null,
-   constraint PK_LEDGER primary key (id)
+   create_time          TIMESTAMP WITH TIME ZONE not null,
+   update_time          TIMESTAMP WITH TIME ZONE not null,
+   constraint pk__ledger__id primary key (id)
 );
 
 comment on table ledger is
@@ -172,10 +172,10 @@ create table mid_user_ledger (
    user_id              INT8                 not null,
    ledger_id            INT8                 not null,
    status               INT2                 not null,
-   create_time          TIMESTAMP            not null,
-   update_time          TIMESTAMP            not null,
-   constraint PK_MID_USER_LEDGER primary key (id),
-   constraint uk__user_id__ledger_id unique (user_id, ledger_id)
+   create_time          TIMESTAMP WITH TIME ZONE not null,
+   update_time          TIMESTAMP WITH TIME ZONE not null,
+   constraint pk__mid_user_ledger__id primary key (id),
+   constraint uk__mid_user_ledger__user_id__ledger_id unique (user_id, ledger_id)
 );
 
 comment on table mid_user_ledger is
@@ -210,9 +210,9 @@ create table record (
    record_type          INT2                 not null,
    remark               VARCHAR(200)         null,
    status               INT2                 not null,
-   create_time          TIMESTAMP            not null,
-   update_time          TIMESTAMP            not null,
-   constraint PK_RECORD primary key (id)
+   create_time          TIMESTAMP WITH TIME ZONE not null,
+   update_time          TIMESTAMP WITH TIME ZONE not null,
+   constraint pk__record__id primary key (id)
 );
 
 comment on table record is
@@ -254,9 +254,9 @@ create table sys_category (
    name                 VARCHAR(100)         not null,
    icon                 TEXT                 not null,
    status               INT2                 not null,
-   create_time          TIMESTAMP            not null,
-   update_time          TIMESTAMP            not null,
-   constraint PK_SYS_CATEGORY primary key (id)
+   create_time          TIMESTAMP WITH TIME ZONE not null,
+   update_time          TIMESTAMP WITH TIME ZONE not null,
+   constraint pk__sys_category__id primary key (id)
 );
 
 comment on table sys_category is
@@ -291,9 +291,9 @@ create table team (
    user_id              INT8                 not null,
    team_user_id         INT8                 not null,
    status               INT2                 not null,
-   create_time          TIMESTAMP            not null,
-   update_time          TIMESTAMP            not null,
-   constraint PK_TEAM primary key (id)
+   create_time          TIMESTAMP WITH TIME ZONE not null,
+   update_time          TIMESTAMP WITH TIME ZONE not null,
+   constraint pk__team__id primary key (id)
 );
 
 comment on table team is
@@ -331,9 +331,10 @@ create table "user" (
    password             VARCHAR(512)         not null,
    salt                 VARCHAR(256)         not null,
    status               INT2                 not null,
-   create_time          TIMESTAMP            not null,
-   update_time          TIMESTAMP            not null,
-   constraint PK_USER primary key (id)
+   create_time          TIMESTAMP WITH TIME ZONE not null,
+   update_time          TIMESTAMP WITH TIME ZONE not null,
+   constraint pk__user_id primary key (id),
+   constraint uk__user__name unique (name)
 );
 
 comment on table "user" is
@@ -346,7 +347,7 @@ comment on column "user".name is
 '用户名';
 
 comment on column "user".gender is
-'性别(0:未知,1:男,2:女,3:保密)';
+'性别(0:未知(默认),1:男,2:女,3:保密)';
 
 comment on column "user".avatar is
 '头像';
@@ -367,7 +368,7 @@ comment on column "user".salt is
 '盐';
 
 comment on column "user".status is
-'状态(0:正常,1:已删除)';
+'状态(0:正常(默认),1:已删除)';
 
 comment on column "user".create_time is
 '创建时间';
@@ -385,9 +386,9 @@ create table user_category (
    name                 VARCHAR(100)         not null,
    icon                 TEXT                 not null,
    status               INT2                 not null,
-   create_time          TIMESTAMP            not null,
-   update_time          TIMESTAMP            not null,
-   constraint PK_USER_CATEGORY primary key (id)
+   create_time          TIMESTAMP WITH TIME ZONE not null,
+   update_time          TIMESTAMP WITH TIME ZONE not null,
+   constraint pk__user_category__id primary key (id)
 );
 
 comment on table user_category is
