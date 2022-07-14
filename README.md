@@ -1,16 +1,17 @@
 <p align="center">
-	<img alt="logo" height="100px" width="100px" src="./whale-docs/imgs/whale_docs_logo.png">
+	<img alt="logo" height="100px" width="100px" src="./public/images/logo/whale_docs_logo.png">
 </p>
 <h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">Whale Docs [鲸鱼文档]</h1>
 <h4 align="center">鲸鱼文档一个开源的项目资料库，包含了项目开发中所用到的各种资料数据。</h4>
 <p align="center">
-	<a><img src="https://img.shields.io/github/stars/feiyu-rs?style=social"></a>
+	<a><img src="https://img.shields.io/github/stars/feiyu-rs/whale-docs?style=social"></a>
     <a><img src="https://img.shields.io/github/forks/feiyu-rs/whale-docs?style=social"></a>
 	<a><img src="https://img.shields.io/github/issues/feiyu-rs/whale-docs"></a>
 	<a><img src="https://img.shields.io/github/repo-size/feiyu-rs/whale-docs"></a>
 	<a><img src="https://img.shields.io/badge/WhaleDocs-v1.0.0-brightgreen"></a>
 	<a><img src="https://img.shields.io/github/license/feiyu-rs/whale-docs"></a>
 </p>
+
 
 ## 简介
 
